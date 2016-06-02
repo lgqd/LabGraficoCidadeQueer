@@ -1,6 +1,6 @@
 {
     "manifest_version": 2,
-    "name": "Laboratório Gráfico Cidade Queer: shift-Q",
+    "name": "Laboratório Gráfico Cidade Queer: alt+Q",
     "description": "Extension para mudar a palavra 'queer' por outras opções.",
     "version": "0.2",
     "options_page": "options.html",
