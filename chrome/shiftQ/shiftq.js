@@ -29,13 +29,9 @@ chrome.storage.local.get({myQueer: 'KUIR'}, function(items){
     /* Observer1: Looks for 'div.search' */
     var mObserver = new MutationObserver(function(mutations) {
         /* For each MutationRecord in 'mutations'... */
-        mutations.some(function(mutation) {
-            if (mutation.addedNodes && (mutation.addedNodes.length > 0)) {
-                var node = mutation.target.querySelector("div#search");
-                if (node) {
-                    replace(currentQueer);
-                    return true;
-                }
+        mutations.forEach(function(mutation) {
+            if (mutation.addedNodes && (mutation.addedNodes.length > 0) && (mutation.target.getAttribute("id") === "search")) {
+                replace(currentQueer);
             }
         });
     });
