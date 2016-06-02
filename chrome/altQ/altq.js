@@ -16,7 +16,15 @@ chrome.storage.local.get({myQueer: 'KUIR'}, function(items){
 
                 if (node.nodeType === 3) {
                     var text = node.nodeValue;
-                    var replacedText = text.replace(/queer/gi, thisQueer);
+                    var replacedText = "";
+                    if(thisQueer.toUpperCase() === thisQueer){
+                        replacedText = text.replace(/queer/gi, thisQueer);
+                    }
+                    else{
+                        replacedText = text.replace(/queer/g, thisQueer.toLowerCase())
+                            .replace(/Queer/g, thisQueer[0].toUpperCase()+thisQueer.slice(1).toLowerCase())
+                            .replace(/QUEER/g, thisQueer.toUpperCase());
+                    }
 
                     if (replacedText !== text) {
                         element.replaceChild(document.createTextNode(replacedText), node);
