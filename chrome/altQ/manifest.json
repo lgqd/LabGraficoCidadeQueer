@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
     "name": "Laboratório Gráfico Cidade Queer: alt+Q",
-    "description": "Extension para criar aberturas para a palavra 'queer' ",
-    "version": "0.5",
+    "description": "Extension para experimentar aberturas para a palavra 'queer' ",
+    "version": "0.6",
     "options_page": "options.html",
     "permissions": ["storage"],
     "icons": {"32": "icons/queercity32.png",

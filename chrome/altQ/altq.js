@@ -1,8 +1,11 @@
 chrome.storage.local.get({myQueer: 'KUIR'}, function(items){
-    var myQueerArr = items.myQueer.replace(/ /g, '').split(",");
-    var currentQueer = myQueerArr[Math.floor(Math.random()*myQueerArr.length)];
-    if(Math.random() > 0.66){
-        currentQueer = currentQueer.toUpperCase();
+    function pickQueer(){
+        var myQueerArr = items.myQueer.replace(/ /g, '').split(",");
+        var currentQueer = myQueerArr[Math.floor(Math.random()*myQueerArr.length)];
+        if(Math.random() > 0.66){
+            currentQueer = currentQueer.toUpperCase();
+        }
+        return currentQueer;
     }
 
     var observerConfig = {
@@ -10,7 +13,7 @@ chrome.storage.local.get({myQueer: 'KUIR'}, function(items){
         subtree: true
     };
 
-    function replace(thisQueer){
+    function replace(){
         var elements = document.getElementsByTagName('*');
         for (var i = 0; i < elements.length; i++) {
             var element = elements[i];
@@ -21,6 +24,7 @@ chrome.storage.local.get({myQueer: 'KUIR'}, function(items){
                 if (node.nodeType === 3) {
                     var text = node.nodeValue;
                     var replacedText = "";
+                    var thisQueer = pickQueer();
                     if(thisQueer.toUpperCase() === thisQueer){
                         replacedText = text.replace(/queer/gi, thisQueer);
                     }
@@ -43,7 +47,7 @@ chrome.storage.local.get({myQueer: 'KUIR'}, function(items){
         /* For each MutationRecord in 'mutations'... */
         mutations.forEach(function(mutation) {
             if (mutation.addedNodes && (mutation.addedNodes.length > 0) && (mutation.target.getAttribute("id") === "search")) {
-                replace(currentQueer);
+                replace();
             }
         });
     });
@@ -54,5 +58,5 @@ chrome.storage.local.get({myQueer: 'KUIR'}, function(items){
     catch(err){
         console.log(err);
     }
-    replace(currentQueer);
+    replace();
 });
