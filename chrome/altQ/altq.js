@@ -1,5 +1,9 @@
 chrome.storage.local.get({myQueer: 'KUIR'}, function(items){
-    var currentQueer = items.myQueer;
+    var myQueerArr = items.myQueer.replace(/ /g, '').split(",");
+    var currentQueer = myQueerArr[Math.floor(Math.random()*myQueerArr.length)];
+    if(Math.random() > 0.66){
+        currentQueer = currentQueer.toUpperCase();
+    }
 
     var observerConfig = {
         childList: true,
