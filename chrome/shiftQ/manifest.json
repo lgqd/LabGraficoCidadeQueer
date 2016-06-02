@@ -1,0 +1,17 @@
+{
+    "manifest_version": 2,
+    "name": "Laboratório Gráfico Cidade Queer: shift-Q",
+    "description": "Extension para mudar a palavra 'queer' por outras opções.",
+    "version": "0.1",
+    "options_page": "options.html",
+    "permissions": ["storage"],
+    "icons": {"32": "icons/queercity32.png",
+              "64": "icons/queercity64.png",
+              "128": "icons/queercity128.png"},
+    "content_scripts": [{
+        "matches": ["http://*/*",
+                    "https://*/*"],
+        "js": ["shiftq.js"],
+        "run_at": "document_end"
+    }]
+}
