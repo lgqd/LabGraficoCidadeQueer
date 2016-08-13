@@ -1,0 +1,22 @@
+body * {
+  background-color: #fad0d9;
+  text-align: right;
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 12px;
+}
+
+* a {
+  color: #777;
+  font-size: 20px;
+}
+
+* a:visited {
+  color: #999;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+* a:hover {
+  font-size: 200px;
+  color: #555;
+}
