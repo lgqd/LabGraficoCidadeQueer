@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+    "name": "Laboratório Gráfico Cidade Queer: CSS Injection",
+    "description": "Extension para experimentar desnormatização coletiva de textos e códigos",
+    "version": "0.0",
+    "icons": {"32": "icons/LGQ-reCSS-32.png",
+              "64": "icons/LGQ-reCSS-64.png",
+              "128": "icons/LGQ-reCSS-128.png"},
+    "content_scripts": [{
+        "matches": ["http://*/*",
+                    "https://*/*"],
+        "js": ["recss.js"],
+        "run_at": "document_idle"
+    }]
+}
