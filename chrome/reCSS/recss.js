@@ -2,13 +2,14 @@
   https://certsimple.com/blog/localhost-ssl-fix
 */
 
-var mstyle = null;
+var mStyle = null;
 
 function changeStyle(newStyle) {
-  if(mstyle === null) {
+  if(mStyle == null) {
+    console.log("mStyle is null. Try again.");
     initStyleVar();
   }
-  mstyle.innerHTML = newStyle;
+  mStyle.innerHTML = newStyle;
 }
 
 function httpGetAsync(theUrl, callback) {
@@ -17,18 +18,21 @@ function httpGetAsync(theUrl, callback) {
     if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
       callback(xmlHttp.responseText);
   }
-  xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+  xmlHttp.open("GET", theUrl, true);
   xmlHttp.send(null);
 }
 
-function initStyleVar() {
-  mstyle = document.createElement("style");
-  mstyle.setAttribute("class", "LGQ");
-  document.getElementsByTagName('head')[0].appendChild(mstyle);  
+function setup() {
+  initStyleVar();
+  setInterval(function() {
+    httpGetAsync("https://cleis.local:8080/css.css", changeStyle);
+  }, 5000);
 }
 
-window.onload = initStyleVar;
+function initStyleVar() {
+  mStyle = document.createElement("style");
+  mStyle.setAttribute("class", "LGQ");
+  document.getElementsByTagName('head')[0].appendChild(mStyle);
+}
 
-document.onclick = function(e) {
-  httpGetAsync("https://cleis.local:8080/css.css", changeStyle);
-};
+window.onload = setup;
